@@ -24,6 +24,7 @@ export const LoginPage = () => {
               label="Nombre de Usuario"
               onFocus={() => setUserFocus(true)}
               onBlur={() => setUserFocus(false)}
+              color="secondary"
               size="medium"
             />
           </InputIcon>
@@ -47,7 +48,7 @@ export const LoginPage = () => {
             variant="contained"
             color="primary"
           >
-            botonsin
+            Entrar
           </Button>
         </LoginBox>
       </BlurDiv>
