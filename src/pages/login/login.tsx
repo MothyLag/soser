@@ -1,6 +1,7 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser, faKey } from "@fortawesome/free-solid-svg-icons";
 import { TextField } from "@material-ui/core";
+import "../../App.css";
 import Button from "@material-ui/core/Button";
 
 import React, { useState } from "react";
@@ -16,12 +17,15 @@ export const LoginPage = () => {
           <InputIcon>
             <FontAwesomeIcon
               icon={faUser}
-              color={userFocus ? "#F50057" : "#A68881"}
+              color={userFocus ? "#F50057" : "white"}
               style={{ marginRight: "10px", marginBottom: "5px" }}
             />
             <TextField
-              style={{ color: "white" }}
               label="Nombre de Usuario"
+              inputProps={{
+                autocomplete: "new-password",
+                className: "textWhite",
+              }}
               onFocus={() => setUserFocus(true)}
               onBlur={() => setUserFocus(false)}
               color="secondary"
@@ -31,15 +35,20 @@ export const LoginPage = () => {
           <InputIcon>
             <FontAwesomeIcon
               icon={faKey}
-              color={passFocus ? "#F50057" : "#A68881"}
+              color={passFocus ? "#F50057" : "white"}
               style={{ marginRight: "10px", marginBottom: "5px" }}
             />
+
             <TextField
-              id="input-with-icon-grid"
               label="Contraseña"
+              type="password"
               color="secondary"
               onFocus={() => setPassFocus(true)}
               onBlur={() => setPassFocus(false)}
+              inputProps={{
+                autocomplete: "new-password",
+                className: "textWhite",
+              }}
               size="medium"
             />
           </InputIcon>
