@@ -1,3 +1,4 @@
+require("dotenv").config();
 import { ApolloClient } from "@apollo/client";
 import { setContext } from "apollo-link-context";
 import { InMemoryCache } from "apollo-cache-inmemory";
@@ -5,10 +6,7 @@ import { createUploadLink } from "apollo-upload-client";
 import { split } from "@apollo/client";
 import { getMainDefinition } from "@apollo/client/utilities";
 import { WebSocketLink } from "apollo-link-ws";
-import * as dotenv from "dotenv";
-
 //const server = "45.82.72.247";
-dotenv.config();
 const server = "localhost";
 const GRAPHQL_URL = process.env.API_URL
   ? process.env.API_URL
