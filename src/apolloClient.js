@@ -9,7 +9,7 @@ import { WebSocketLink } from "apollo-link-ws";
 const server = "localhost";
 require("dotenv").config();
 const GRAPHQL_URL = process.env.REACT_APP_API_URL
-  ? process.env.API_URL
+  ? process.env.REACT_APP_API_URL
   : `http://${server}:4000`;
 const wsLink = () => {
   const token = `Bearer ${localStorage.getItem("token")}`;
