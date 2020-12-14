@@ -5,13 +5,12 @@ import { createUploadLink } from "apollo-upload-client";
 import { split } from "@apollo/client";
 import { getMainDefinition } from "@apollo/client/utilities";
 import { WebSocketLink } from "apollo-link-ws";
-require("dotenv").config();
 //const server = "45.82.72.247";
 const server = "localhost";
-const GRAPHQL_URL = process.env.API_URL
+require("dotenv").config();
+const GRAPHQL_URL = process.env.REACT_APP_API_URL
   ? process.env.API_URL
   : `http://${server}:4000`;
-console.log(process.env.API_URL);
 const wsLink = () => {
   const token = `Bearer ${localStorage.getItem("token")}`;
   return new WebSocketLink({
