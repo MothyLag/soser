@@ -21,11 +21,12 @@ export const LoginPage = () => {
               style={{ marginRight: "10px", marginBottom: "5px" }}
             />
             <TextField
-              label="Nombre de Usuario"
+              label="Número de control"
               inputProps={{
                 autocomplete: "new-password",
                 className: "textWhite",
               }}
+              type="number"
               onFocus={() => setUserFocus(true)}
               onBlur={() => setUserFocus(false)}
               color="secondary"

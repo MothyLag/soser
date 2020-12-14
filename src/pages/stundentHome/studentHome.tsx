@@ -6,13 +6,18 @@ import { MenuCard } from "../../components/menuCard/menuCard";
 import { StudentHomeWrapper } from "./studentHome.styles";
 import { EXAMPLE_TEXT } from "../../utils/texts";
 import { Container } from "@material-ui/core";
+import { useHistory } from "react-router-dom";
+import { DrawerApp } from "../../components/Drawer/drawerApp";
 
 export const StudentHome = () => {
   const [open, setOpen] = useState(false);
   const openModal = () => setOpen(true);
+  const [drawer, setDrawer] = useState(false);
+  const history = useHistory();
   return (
     <>
-      <ApplicationBar />
+      <DrawerApp open={drawer} setOpen={setDrawer} />
+      <ApplicationBar setOpenDrawer={setDrawer} />
       <StudentHomeWrapper>
         <Container>
           <Grid container spacing={3}>
@@ -56,7 +61,9 @@ export const StudentHome = () => {
               <MenuCard
                 color="#F24B4B"
                 text="Cuestionario inicial"
-                onClick={() => {}}
+                onClick={() => {
+                  history.push("/cuestionario");
+                }}
               />
             </Grid>
           </Grid>
