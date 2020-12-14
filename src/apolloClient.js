@@ -12,9 +12,6 @@ const GRAPHQL_URL = process.env.API_URL
   ? process.env.API_URL
   : `http://${server}:4000`;
 
-/*const httpLink = createHttpLink({
-  uri: 'http://localhost:4000/',
-});*/
 const wsLink = () => {
   const token = `Bearer ${localStorage.getItem("token")}`;
   return new WebSocketLink({
