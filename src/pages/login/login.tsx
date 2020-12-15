@@ -1,6 +1,11 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser, faKey } from "@fortawesome/free-solid-svg-icons";
-import { Snackbar, TextField } from "@material-ui/core";
+import {
+  Backdrop,
+  CircularProgress,
+  Snackbar,
+  TextField,
+} from "@material-ui/core";
 import "../../App.css";
 import Button from "@material-ui/core/Button";
 
@@ -17,16 +22,17 @@ import { LOG_IN } from "../../graphql/login.query";
 import { useLoginForm } from "./login.formik";
 import Alert from "@material-ui/lab/Alert";
 import { useHistory } from "react-router-dom";
+import { useStyles } from "../../hooks";
 
 export const LoginPage = () => {
   const [userFocus, setUserFocus] = useState(false);
   const [passFocus, setPassFocus] = useState(false);
   const [errorOpen, setErrorOpen] = useState(false);
   const [successOpen, setSuccessOpen] = useState(false);
+  const classes = useStyles();
   const history = useHistory();
   const [login, { data, error, loading }] = useLazyQuery(LOG_IN);
   const formik = useLoginForm(login);
-
   useEffect(() => {
     if (error) {
       setErrorOpen(true);
@@ -139,6 +145,9 @@ export const LoginPage = () => {
           <Alert severity="success">Bienvenido</Alert>
         </Snackbar>
       )}
+      <Backdrop className={classes.backdrop} open={loading}>
+        <CircularProgress color="inherit" />
+      </Backdrop>
     </LoginWrapper>
   );
 };

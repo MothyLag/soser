@@ -6,7 +6,6 @@ import {
   faUser,
 } from "@fortawesome/free-solid-svg-icons";
 import { Button, Snackbar } from "@material-ui/core";
-import { makeStyles, createStyles, Theme } from "@material-ui/core/styles";
 
 import React, { useEffect, useState } from "react";
 import { SoserIconInput } from "../../components/soserIconInput/soserIconInput";
@@ -16,6 +15,7 @@ import Alert from "@material-ui/lab/Alert";
 import { BlurDiv, SignUpBox, SignUpWrapper } from "./signUp.styles";
 import { CircularProgress } from "@material-ui/core";
 import { Backdrop } from "@material-ui/core";
+import { useStyles } from "../../hooks";
 
 export const SignUp = () => {
   const [create, { data, loading, error }] = useMutation(CREATE_USER, {
@@ -24,14 +24,6 @@ export const SignUp = () => {
   const [successOpen, setSuccessOpen] = useState(false);
   const [errorOpen, setErrorOpen] = useState(false);
   const formik = useSignUp(create);
-  const useStyles = makeStyles((theme: Theme) =>
-    createStyles({
-      backdrop: {
-        zIndex: theme.zIndex.drawer + 1,
-        color: "#fff",
-      },
-    })
-  );
   const classes = useStyles();
 
   useEffect(() => {
