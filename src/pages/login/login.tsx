@@ -43,7 +43,7 @@ export const LoginPage = () => {
       setSuccessOpen(true);
       history.replace("/home");
     }
-  }, [data]);
+  }, [data,history]);
   return (
     <LoginWrapper>
       <BlurDiv>
