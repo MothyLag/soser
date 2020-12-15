@@ -16,7 +16,7 @@ export const BlurDiv = styled.div`
   backdrop-filter: blur(5px);
 `;
 
-export const LoginBox = styled.div`
+export const LoginBox = styled.form`
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -28,5 +28,7 @@ export const LoginBox = styled.div`
 export const InputIcon = styled.div`
   display: flex;
   align-items: flex-end;
+`;
+export const Field = styled.div`
   margin-bottom: 100px;
 `;

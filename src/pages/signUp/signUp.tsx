@@ -131,7 +131,7 @@ export const SignUp = () => {
           autoHideDuration={6000}
           onClose={() => setErrorOpen(false)}
         >
-          <Alert severity="error">Ocurrió un error inesperado</Alert>
+          <Alert severity="error">{error.message}</Alert>
         </Snackbar>
       )}
 
