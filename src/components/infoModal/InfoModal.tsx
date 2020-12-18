@@ -12,6 +12,7 @@ import { TransitionProps } from "@material-ui/core/transitions";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
 import { IInfoModalProps } from "./infoModal.interfaces";
+import { Typography } from "@material-ui/core";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -33,7 +34,7 @@ const Transition = React.forwardRef(function Transition(
 });
 
 export const InfoModal = (props: IInfoModalProps) => {
-  const { open, setOpen, text } = props;
+  const { open, setOpen, text, title } = props;
   const classes = useStyles();
   return (
     <div>
@@ -53,6 +54,9 @@ export const InfoModal = (props: IInfoModalProps) => {
             >
               <FontAwesomeIcon icon={faTimes} />
             </IconButton>
+            <Typography style={{ flexGrow: 1 }} variant="h6">
+              {title}
+            </Typography>
           </Toolbar>
         </AppBar>
         {text}

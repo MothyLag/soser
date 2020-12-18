@@ -20,6 +20,7 @@ export const StudentHome = () => {
   const openModal = () => setOpen(true);
   const [drawer, setDrawer] = useState(false);
   const [modalText, setModalText] = useState("");
+  const [modalTitle, setModalTitle] = useState("");
   const history = useHistory();
   return (
     <>
@@ -33,6 +34,7 @@ export const StudentHome = () => {
                 text="¿Qué es el servicio social?"
                 onClick={() => {
                   setModalText(WHAT_SERVICE);
+                  setModalTitle("¿Qué es el servicio social?");
                   openModal();
                 }}
               />
@@ -42,6 +44,7 @@ export const StudentHome = () => {
                 text="Objetivo del servicio social"
                 onClick={() => {
                   setModalText(OBJECTIVE_SERVICE);
+                  setModalTitle("Objetivo del servicio social");
                   openModal();
                 }}
               />
@@ -51,6 +54,7 @@ export const StudentHome = () => {
                 text="Proposito del servicio social"
                 onClick={() => {
                   setModalText(PURPOSE);
+                  setModalTitle("Proposito del servicio social");
                   openModal();
                 }}
               />
@@ -60,6 +64,9 @@ export const StudentHome = () => {
                 text="Duración del servicio social y requisitos del servicio social"
                 onClick={() => {
                   setModalText(DURATION_SERVICE);
+                  setModalTitle(
+                    "Duración del servicio social y requisitos del servicio social"
+                  );
                   openModal();
                 }}
               />
@@ -69,6 +76,7 @@ export const StudentHome = () => {
                 text="¿Como realizar el servicio social?"
                 onClick={() => {
                   setModalText(HOW_SERVICE);
+                  setModalTitle("¿Como realizar el servicio social?");
                   openModal();
                 }}
               />
@@ -85,7 +93,12 @@ export const StudentHome = () => {
           </Grid>
         </Container>
       </StudentHomeWrapper>
-      <InfoModal open={open} setOpen={setOpen} text={modalText} />
+      <InfoModal
+        open={open}
+        setOpen={setOpen}
+        text={modalText}
+        title={modalTitle}
+      />
     </>
   );
 };
