@@ -1,6 +1,7 @@
 import React from "react";
 import { Route, Switch } from "react-router-dom";
 import "./App.css";
+import { Index } from "./pages";
 
 import { DatosGenerales } from "./pages/datosGenerales/DatosGenerales";
 import { LoginPage } from "./pages/login/login";
@@ -12,6 +13,7 @@ export const App = () => {
   return (
     <>
       <Switch>
+        <Route path="/" exact component={Index} />
         <Route path="/login" exact component={LoginPage} />
         <Route path="/sign-up" exact component={SignUp} />
         <Route path="/datos-generales" exact component={DatosGenerales} />

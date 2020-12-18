@@ -43,7 +43,7 @@ export const LoginPage = () => {
       setSuccessOpen(true);
       history.replace("/home");
     }
-  }, [data,history]);
+  }, [data, history]);
   return (
     <LoginWrapper>
       <BlurDiv>
@@ -125,6 +125,11 @@ export const LoginPage = () => {
           >
             Entrar
           </Button>
+          <b>
+            <small onClick={()=>history.replace("/sign-up")} style={{ cursor: "pointer", color: "white" }}>
+              Aún no tengo una cuenta
+            </small>
+          </b>
         </LoginBox>
       </BlurDiv>
       {error && (

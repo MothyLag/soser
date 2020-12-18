@@ -16,6 +16,7 @@ import { BlurDiv, SignUpBox, SignUpWrapper } from "./signUp.styles";
 import { CircularProgress } from "@material-ui/core";
 import { Backdrop } from "@material-ui/core";
 import { useStyles } from "../../hooks";
+import { useHistory } from "react-router-dom";
 
 export const SignUp = () => {
   const [create, { data, loading, error }] = useMutation(CREATE_USER, {
@@ -25,7 +26,7 @@ export const SignUp = () => {
   const [errorOpen, setErrorOpen] = useState(false);
   const formik = useSignUp(create);
   const classes = useStyles();
-
+  const history = useHistory();
   useEffect(() => {
     if (data) setSuccessOpen(true);
   }, [data]);
@@ -115,6 +116,14 @@ export const SignUp = () => {
           >
             Guardar
           </Button>
+          <b>
+            <small
+              onClick={() => history.replace("/login")}
+              style={{ cursor: "pointer", color: "white" }}
+            >
+              ya tengo una cuenta
+            </small>
+          </b>
         </SignUpBox>
       </BlurDiv>
       {error && (

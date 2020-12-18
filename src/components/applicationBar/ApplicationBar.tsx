@@ -7,7 +7,7 @@ import {
   Typography,
 } from "@material-ui/core/";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBars } from "@fortawesome/free-solid-svg-icons";
+import { faBars, faUser } from "@fortawesome/free-solid-svg-icons";
 import { useHistory } from "react-router-dom";
 import { IApplicationBarProps } from "./ApplicationBar.interfaces";
 export const ApplicationBar = (props: IApplicationBarProps) => {
@@ -34,7 +34,16 @@ export const ApplicationBar = (props: IApplicationBarProps) => {
         >
           Soser
         </Typography>
-        <Button color="inherit">Login</Button>
+        <Button color="inherit">
+          <IconButton
+            edge="start"
+            color="inherit"
+            aria-label="menu"
+            onClick={() => setOpenDrawer(true)}
+          >
+            <FontAwesomeIcon icon={faUser} />
+          </IconButton>
+        </Button>
       </Toolbar>
     </AppBar>
   );
