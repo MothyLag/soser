@@ -5,7 +5,7 @@ export const Index = () => {
   useEffect(() => {
     const token = localStorage.getItem("token");
     console.log(token);
-    if (token) history.replace("/home");
+    if (token && token !== null) history.replace("/home");
     else history.replace("/login");
   });
   return <div></div>;

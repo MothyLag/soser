@@ -3,6 +3,8 @@ import {
   AppBar,
   Button,
   IconButton,
+  Menu,
+  MenuItem,
   Toolbar,
   Typography,
 } from "@material-ui/core/";
@@ -13,6 +15,21 @@ import { IApplicationBarProps } from "./ApplicationBar.interfaces";
 export const ApplicationBar = (props: IApplicationBarProps) => {
   const { setOpenDrawer } = props;
   const history = useHistory();
+  const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
+
+  const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
+  const handleLogOut = () => {
+    setAnchorEl(null);
+    localStorage.clear();
+    history.replace("/");
+  };
   return (
     <AppBar
       position="static"
@@ -39,11 +56,20 @@ export const ApplicationBar = (props: IApplicationBarProps) => {
             edge="start"
             color="inherit"
             aria-label="menu"
-            onClick={() => setOpenDrawer(true)}
+            onClick={handleClick}
           >
             <FontAwesomeIcon icon={faUser} />
           </IconButton>
         </Button>
+        <Menu
+          id="simple-menu"
+          anchorEl={anchorEl}
+          keepMounted
+          open={Boolean(anchorEl)}
+          onClose={handleClose}
+        >
+          <MenuItem onClick={handleLogOut}>Logout</MenuItem>
+        </Menu>
       </Toolbar>
     </AppBar>
   );

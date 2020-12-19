@@ -39,8 +39,9 @@ export const LoginPage = () => {
     }
   }, [error]);
   useEffect(() => {
-    if (data) {
+    if (data && data !== null) {
       setSuccessOpen(true);
+      localStorage.setItem("token", data.login.token);
       history.replace("/home");
     }
   }, [data, history]);
@@ -58,7 +59,7 @@ export const LoginPage = () => {
               <TextField
                 label="Número de control"
                 inputProps={{
-                  autocomplete: "new-password",
+                  autoComplete: "new-password",
                   className: "textWhite",
                 }}
                 value={formik.values.ctrlNumber}
@@ -107,7 +108,7 @@ export const LoginPage = () => {
                   setPassFocus(false);
                 }}
                 inputProps={{
-                  autocomplete: "new-password",
+                  autoComplete: "new-password",
                   className: "textWhite",
                 }}
                 size="medium"
@@ -126,7 +127,10 @@ export const LoginPage = () => {
             Entrar
           </Button>
           <b>
-            <small onClick={()=>history.replace("/sign-up")} style={{ cursor: "pointer", color: "white" }}>
+            <small
+              onClick={() => history.replace("/sign-up")}
+              style={{ cursor: "pointer", color: "white" }}
+            >
               Aún no tengo una cuenta
             </small>
           </b>

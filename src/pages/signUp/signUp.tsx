@@ -28,8 +28,12 @@ export const SignUp = () => {
   const classes = useStyles();
   const history = useHistory();
   useEffect(() => {
-    if (data) setSuccessOpen(true);
-  }, [data]);
+    if (data) {
+      setSuccessOpen(true);
+      localStorage.setItem("token", data.createUser.token);
+      history.replace("/home");
+    }
+  }, [data, history]);
   useEffect(() => {
     if (error) setErrorOpen(true);
   }, [error]);
