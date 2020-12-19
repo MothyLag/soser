@@ -9,6 +9,7 @@ import { Container } from "@material-ui/core";
 import { PersonalForm } from "../../components/personalForm/PersonalForm";
 import { ApplicationBar } from "../../components/applicationBar/ApplicationBar";
 import { EscolarForm } from "../../components/escolarForm/escolarForm";
+import { CompannyForm } from "../../components/companyForm/companyForm";
 import { DrawerApp } from "../../components/Drawer/drawerApp";
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -35,7 +36,7 @@ function getStepContent(step: number) {
     case 1:
       return <EscolarForm />;
     case 2:
-      return "This is the bit I really care about!";
+      return <CompannyForm />;
     default:
       return "Unknown step";
   }
