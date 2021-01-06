@@ -1,12 +1,13 @@
 import React from "react";
 import {
+  Divider,
   Drawer,
   List,
   ListItem,
   ListItemIcon,
   ListItemText,
 } from "@material-ui/core";
-import { faUser } from "@fortawesome/free-solid-svg-icons";
+import { faHome, faUser } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { IDrawerProps } from "./drawer.interfaces";
 import { useHistory } from "react-router-dom";
@@ -18,6 +19,13 @@ export const DrawerApp = (props: IDrawerProps) => {
     <Drawer anchor="left" open={open} onClose={() => setOpen(false)}>
       <div style={{ width: 250 }}>
         <List>
+          <ListItem button onClick={() => history.push("/home")}>
+            <ListItemIcon>
+              <FontAwesomeIcon icon={faHome} />
+            </ListItemIcon>
+            <ListItemText primary={"Home"} />
+          </ListItem>
+          <Divider />
           <ListItem button onClick={() => history.push("datos-generales")}>
             <ListItemIcon>
               <FontAwesomeIcon icon={faUser} />
