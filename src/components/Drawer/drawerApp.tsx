@@ -7,7 +7,7 @@ import {
   ListItemIcon,
   ListItemText,
 } from "@material-ui/core";
-import { faHome, faUser } from "@fortawesome/free-solid-svg-icons";
+import { faFileAlt, faHome, faUser } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { IDrawerProps } from "./drawer.interfaces";
 import { useHistory } from "react-router-dom";
@@ -31,6 +31,12 @@ export const DrawerApp = (props: IDrawerProps) => {
               <FontAwesomeIcon icon={faUser} />
             </ListItemIcon>
             <ListItemText primary={"Datos Generales"} />
+          </ListItem>
+          <ListItem button onClick={() => history.push("reportes")}>
+            <ListItemIcon>
+              <FontAwesomeIcon icon={faFileAlt} />
+            </ListItemIcon>
+            <ListItemText primary={"Reportes"} />
           </ListItem>
         </List>
       </div>
