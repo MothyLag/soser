@@ -18,7 +18,7 @@ import { ReportWrapper, FormBox, FileInput } from "./reportes.styles";
 export const Reports = () => {
   const [selectedFile, setSelectedFile] = useState<FileList | null>(null);
   const [drawer, setDrawer] = useState(false);
-  const [uploadReport, { data, loading, error }] = useMutation(UPLOAD_REPORT);
+  const [uploadReport] = useMutation(UPLOAD_REPORT);
   return (
     <>
       <DrawerApp open={drawer} setOpen={setDrawer} />
