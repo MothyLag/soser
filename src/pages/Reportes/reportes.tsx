@@ -1,3 +1,4 @@
+import { useMutation } from "@apollo/client";
 import { faArrowCircleUp } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -11,10 +12,13 @@ import {
 import React, { useState } from "react";
 import { ApplicationBar } from "../../components/applicationBar/ApplicationBar";
 import { DrawerApp } from "../../components/Drawer/drawerApp";
+import UPLOAD_REPORT from "../../graphql/uploadReport.mutation";
 import { ReportWrapper, FormBox, FileInput } from "./reportes.styles";
 
 export const Reports = () => {
+  const [selectedFile, setSelectedFile] = useState<FileList | null>(null);
   const [drawer, setDrawer] = useState(false);
+  const [uploadReport, { data, loading, error }] = useMutation(UPLOAD_REPORT);
   return (
     <>
       <DrawerApp open={drawer} setOpen={setDrawer} />
@@ -50,8 +54,21 @@ export const Reports = () => {
               defaultValue="15690223"
             />
           </FormControl>
-          <FileInput type="file" />
-          <Button variant="contained" color="primary">
+          <FileInput
+            type="file"
+            onChange={(e) => setSelectedFile(e.target.files)}
+          />
+          <Button
+            variant="contained"
+            color="primary"
+            onClick={() =>
+              uploadReport({
+                variables: {
+                  file: selectedFile !== null ? selectedFile[0] : selectedFile,
+                },
+              })
+            }
+          >
             Subir &nbsp;
             <FontAwesomeIcon icon={faArrowCircleUp} />
           </Button>
