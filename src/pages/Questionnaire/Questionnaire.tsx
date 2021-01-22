@@ -58,7 +58,7 @@ export const Questionnaire = () => {
   return (
     <div className={classes.root}>
       <DrawerApp open={drawer} setOpen={setDrawer} />
-      <ApplicationBar openDrawer={drawer} setOpenDrawer={setDrawer} />
+      <ApplicationBar setOpenDrawer={setDrawer} />
       <Stepper activeStep={activeStep}>
         {steps.map((label, index) => {
           const stepProps: { completed?: boolean } = {};

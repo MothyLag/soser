@@ -31,7 +31,7 @@ export const DatosGenerales = () => {
   return (
     <>
       <DrawerApp open={drawer} setOpen={setDrawer} />
-      <ApplicationBar openDrawer={drawer} setOpenDrawer={setDrawer} />
+      <ApplicationBar setOpenDrawer={setDrawer} />
       <DatosGeneralesWrapper>
         <ContentWrapper>
           {loadingPicture && <p>Loading image...</p>}

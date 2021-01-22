@@ -38,6 +38,12 @@ export const DrawerApp = (props: IDrawerProps) => {
             </ListItemIcon>
             <ListItemText primary={"Reportes"} />
           </ListItem>
+          <ListItem button onClick={() => history.push("download-files")}>
+            <ListItemIcon>
+              <FontAwesomeIcon icon={faFileAlt} />
+            </ListItemIcon>
+            <ListItemText primary={"descargar archivos"} />
+          </ListItem>
         </List>
       </div>
     </Drawer>
