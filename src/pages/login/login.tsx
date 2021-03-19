@@ -1,28 +1,21 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faUser, faKey } from "@fortawesome/free-solid-svg-icons";
-import {
-  Backdrop,
-  CircularProgress,
-  Snackbar,
-  TextField,
-} from "@material-ui/core";
-import "../../App.css";
-import Button from "@material-ui/core/Button";
-
-import React, { useEffect, useState } from "react";
-import {
-  LoginWrapper,
-  BlurDiv,
-  LoginBox,
-  InputIcon,
-  Field,
-} from "./login.styles";
 import { useLazyQuery } from "@apollo/client";
-import { LOG_IN } from "../../graphql/login.query";
-import { useLoginForm } from "./login.formik";
-import Alert from "@material-ui/lab/Alert";
+import { faKey, faUser } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { Backdrop, CircularProgress, TextField } from "@material-ui/core";
+import Button from "@material-ui/core/Button";
+import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
+import "../../App.css";
+import { LOG_IN } from "../../graphql/login.query";
 import { useStyles } from "../../hooks";
+import { useLoginForm } from "./login.formik";
+import {
+  BlurDiv,
+  Field,
+  InputIcon,
+  LoginBox,
+  LoginWrapper,
+} from "./login.styles";
 
 export const LoginPage = () => {
   const [userFocus, setUserFocus] = useState(false);
@@ -53,8 +46,12 @@ export const LoginPage = () => {
             <InputIcon>
               <FontAwesomeIcon
                 icon={faUser}
-                color={userFocus ? "#F50057" : "white"}
-                style={{ marginRight: "10px", marginBottom: "5px" }}
+                color={userFocus ? "#F50057" : "#ff337c"}
+                style={{
+                  marginRight: "10px",
+                  // marginBottom: "5px",
+                  fontSize: "3rem",
+                }}
               />
               <TextField
                 label="Número de control"
@@ -66,6 +63,7 @@ export const LoginPage = () => {
                 onChange={formik.handleChange}
                 name="ctrlNumber"
                 type="number"
+                variant="outlined"
                 onFocus={() => setUserFocus(true)}
                 onBlur={(e) => {
                   formik.handleBlur(e);
@@ -87,8 +85,12 @@ export const LoginPage = () => {
             <InputIcon>
               <FontAwesomeIcon
                 icon={faKey}
-                color={passFocus ? "#F50057" : "white"}
-                style={{ marginRight: "10px", marginBottom: "5px" }}
+                color={passFocus ? "#F50057" : "#ff337c"}
+                style={{
+                  marginRight: "10px",
+                  // marginBottom: "5px",
+                  fontSize: "3rem",
+                }}
               />
 
               <TextField
@@ -97,6 +99,7 @@ export const LoginPage = () => {
                 color="secondary"
                 value={formik.values.password}
                 onChange={formik.handleChange}
+                variant="outlined"
                 name="password"
                 error={
                   formik.errors.password !== undefined &&
@@ -118,42 +121,29 @@ export const LoginPage = () => {
               <small style={{ color: "red" }}>{formik.errors.password}</small>
             )}
           </Field>
-          <Button
-            style={{ alignSelf: "flex-end" }}
-            variant="contained"
-            color="primary"
-            type="submit"
-          >
-            Entrar
-          </Button>
-          <b>
-            <small
-              onClick={() => history.replace("/sign-up")}
-              style={{ cursor: "pointer", color: "white" }}
+          <div>
+            <Button
+              style={{ alignSelf: "flex-end", marginRight: "2rem" }}
+              size="medium"
+              variant="contained"
+              color="primary"
+              type="submit"
             >
-              Aún no tengo una cuenta
-            </small>
-          </b>
+              Entrar
+            </Button>
+            <Button
+              style={{ alignSelf: "flex-start", marginLeft: "2rem" }}
+              variant="outlined"
+              color="primary"
+              onClick={() => history.push("/sign-up")}
+            >
+              Registrar
+            </Button>
+          </div>
         </LoginBox>
       </BlurDiv>
-      {error && (
-        <Snackbar
-          open={errorOpen}
-          autoHideDuration={6000}
-          onClose={() => setErrorOpen(false)}
-        >
-          <Alert severity="error">{error.message}</Alert>
-        </Snackbar>
-      )}
-      {data && (
-        <Snackbar
-          open={successOpen}
-          autoHideDuration={6000}
-          onClose={() => setSuccessOpen(false)}
-        >
-          <Alert severity="success">Bienvenido</Alert>
-        </Snackbar>
-      )}
+      {}
+      {}
       <Backdrop className={classes.backdrop} open={loading}>
         <CircularProgress color="inherit" />
       </Backdrop>

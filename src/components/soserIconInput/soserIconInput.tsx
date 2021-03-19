@@ -24,8 +24,8 @@ export const SoserIconInput = (props: ISoserIconInputProps) => {
       <InputIcon>
         <FontAwesomeIcon
           icon={icon}
-          color={inputFocus ? "#F50057" : "white"}
-          style={{ marginRight: "10px" }}
+          color={inputFocus ? "#F50057" : "#ff337c"}
+          style={{ marginRight: "10px", fontSize: "2rem" }}
         />
         <TextField
           onChange={onChange}
@@ -39,6 +39,7 @@ export const SoserIconInput = (props: ISoserIconInputProps) => {
           type={type}
           onFocus={() => setInputFocus(true)}
           onBlur={() => setInputFocus(false)}
+          style={{ width: "20vw" }}
           color="secondary"
           size="medium"
           error={error !== undefined && touched}

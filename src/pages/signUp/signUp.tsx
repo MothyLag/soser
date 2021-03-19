@@ -5,18 +5,20 @@ import {
   faLock,
   faUser,
 } from "@fortawesome/free-solid-svg-icons";
-import { Button, Snackbar } from "@material-ui/core";
-
+import {
+  Backdrop,
+  Button,
+  CircularProgress,
+  Snackbar,
+} from "@material-ui/core";
+import Alert from "@material-ui/lab/Alert";
 import React, { useEffect, useState } from "react";
+import { useHistory } from "react-router-dom";
 import { SoserIconInput } from "../../components/soserIconInput/soserIconInput";
 import { CREATE_USER } from "../../graphql/createUser.mutation";
-import { useSignUp } from "./signUp.formik";
-import Alert from "@material-ui/lab/Alert";
-import { BlurDiv, SignUpBox, SignUpWrapper } from "./signUp.styles";
-import { CircularProgress } from "@material-ui/core";
-import { Backdrop } from "@material-ui/core";
 import { useStyles } from "../../hooks";
-import { useHistory } from "react-router-dom";
+import { useSignUp } from "./signUp.formik";
+import { BlurDiv, SignUpBox, SignUpWrapper } from "./signUp.styles";
 
 export const SignUp = () => {
   const [create, { data, loading, error }] = useMutation(CREATE_USER, {
@@ -41,9 +43,7 @@ export const SignUp = () => {
     <SignUpWrapper>
       <BlurDiv>
         <SignUpBox onSubmit={formik.handleSubmit}>
-          <div>
-            <h2 style={{ color: "white" }}>Registra tus datos</h2>
-          </div>
+          <h2 style={{ color: "primary" }}>Registra tus datos</h2>
           <SoserIconInput
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
@@ -111,23 +111,32 @@ export const SignUp = () => {
             touched={formik.touched.email}
             name="email"
           />
-          <Button
-            variant="contained"
-            type="submit"
-            color="primary"
-            disabled={loading}
-            style={{ alignSelf: "flex-end", marginTop: "20px" }}
+          <div
+            style={{
+              marginTop: "10px",
+              display: "flex",
+              width: "90%",
+              justifyContent: "space-between",
+            }}
           >
-            Guardar
-          </Button>
-          <b>
-            <small
-              onClick={() => history.replace("/login")}
-              style={{ cursor: "pointer", color: "white" }}
+            <Button
+              style={{ alignSelf: "flex-start" }}
+              onClick={() => history.go(-1)}
+              variant="outlined"
+              color="primary"
             >
-              ya tengo una cuenta
-            </small>
-          </b>
+              Regresar
+            </Button>
+            <Button
+              variant="contained"
+              type="submit"
+              color="primary"
+              disabled={loading}
+              style={{ alignSelf: "flex-end" }}
+            >
+              Guardar
+            </Button>
+          </div>
         </SignUpBox>
       </BlurDiv>
       {error && (
