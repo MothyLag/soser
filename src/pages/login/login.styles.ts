@@ -17,12 +17,15 @@ export const BlurDiv = styled.div`
 `;
 
 export const LoginBox = styled.form`
+  background-color: white;
+  border-radius: 5px;
   display: flex;
+  margin-top: 30vh;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 200px;
-  height: 100vh;
+  width: 30vw;
+  height: 50vh;
 `;
 
 export const InputIcon = styled.div`
@@ -30,5 +33,12 @@ export const InputIcon = styled.div`
   align-items: flex-end;
 `;
 export const Field = styled.div`
-  margin-bottom: 100px;
+  margin-bottom: 30px;
+`;
+
+export const SmallTag = styled.button`
+  cursor: "pointer";
+  color: "#0000EE";
+  text-decoration: underline;
+  font-weight: bold;
 `;

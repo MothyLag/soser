@@ -16,10 +16,14 @@ export const BlurDiv = styled.div`
 
 export const SignUpBox = styled.form`
   display: flex;
+  border-radius: 5px;
+  margin-top: 20vh;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 200px;
+  width: 30vw;
+  height: 50vh;
+  background-color: white;
 `;
 
 export const InputIcon = styled.div`
